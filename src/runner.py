@@ -37,7 +37,7 @@ else:
     analyzer.image.save(DIRECTORY + IMAGEA)
     os.remove(DIRECTORY + IMAGEB)
     analyzer.image.save(DIRECTORY + IMAGEB)
-    CONFIGURATION['current'] = post.link
+    config['current'] = post.link
     pickle.dump(config, open(CONFIGURATION, 'wb'))
     print('done')
     logger.info('done')
