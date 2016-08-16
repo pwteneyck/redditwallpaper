@@ -17,6 +17,10 @@ if not os.path.exists(srcDir):
     os.makedirs(srcDir)
 if not os.path.exists(photosDir):
     os.makedirs(photosDir)
+    a = open("a.jpg", "w")
+    b = open("a.jpg", "w")
+    a.write("a")
+    b.write("b")
 if not os.path.exists(historyDir):
     os.makedirs(historyDir)
 if not os.path.exists(logDir):
