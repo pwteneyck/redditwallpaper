@@ -33,8 +33,8 @@ def downloadPicture(redditImagePost):
     cleanedTitle = re.sub(r'[/\\:\*\?\"<>\|]', '', redditImagePost.title)
     cleanedTitle = re.sub(r'&quot;', '\'', cleanedTitle)
     filename = time.strftime("%Y-%m-%d") + '.' + time.strftime("%H.%M.%S") + '; ' + cleanedTitle + '.jpg'
-    request.urlretrieve(redditImagePost.link, directory + filename)
-    i = Image.open(directory + filename)
+    request.urlretrieve(redditImagePost.link, historyDir + filename)
+    i = Image.open(historyDir + filename)
     return i
 
 def openURL(url, timeout=20):
