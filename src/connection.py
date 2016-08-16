@@ -29,7 +29,7 @@ def selectPicture(url):
         return post
 
 def downloadPicture(redditImagePost):
-    directory = '/Users/peteeyck/Pictures/redditwallpaper/history/'
+    historyDir = 'photos/history/'
     cleanedTitle = re.sub(r'[/\\:\*\?\"<>\|]', '', redditImagePost.title)
     cleanedTitle = re.sub(r'&quot;', '\'', cleanedTitle)
     filename = time.strftime("%Y-%m-%d") + '.' + time.strftime("%H.%M.%S") + '; ' + cleanedTitle + '.jpg'

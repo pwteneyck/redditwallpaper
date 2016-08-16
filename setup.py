@@ -1,16 +1,26 @@
 #!/usr/bin/python
 import os
 import pickle
+import requests
 import shutil
 import sys
 
 home = sys.argv[1]
 if home[len(home)-1] != "/":
     home = home + "/"
-directory = home + "redditwallpaper/src"
+srcDir = home + "src"
+photosDir = home + "photos"
+historyDir = photosDir + "/history"
+logDir = home + "logs"
 print("Creating Directories...")
-if not os.path.exists(directory):
-    os.makedirs(directory)
+if not os.path.exists(srcDir):
+    os.makedirs(srcDir)
+if not os.path.exists(photosDir):
+    os.makedirs(photosDir)
+if not os.path.exists(historyDir):
+    os.makedirs(historyDir)
+if not os.path.exists(logDir):
+    os.makedirs(logDir)
 
 print("Copying Source...")
 srcDir = "./src/"
@@ -36,7 +46,19 @@ width = sysWidth.splitlines()[0]
 height = sysHeight.splitlines()[0]
 
 # write screen width and height to configuration file
+print("Creating Configuration...")
 conf={  "screenWidth" : width,
         "screenHeight" : height,
         "current" : ""  }
 pickle.dump(conf, open("conf.info", "wb"))
+
+SRCLIST = ["runner", "connection", "imageAnalyzer", "redditHTML"]
+
+def downloadAndSaveSrcFile(name, directory):
+    r = requests.get("https://raw.githubusercontent.com/pwteneyck/redditwallpaper/master/src/" + name)
+    that = open(directory + name, "w")
+    that.write(r.text)
+
+for thing in SRCLIST:
+    downloadAndSaveSrcFile(thing + ".py", srcDir)
+

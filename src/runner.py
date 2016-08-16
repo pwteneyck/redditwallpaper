@@ -4,7 +4,7 @@ import logging
 import time
 from imageAnalyzer import ImageAnalyzer
 
-DIRECTORY = '/Users/peteeyck/Pictures/redditwallpaper/'
+DIRECTORY = 'photos/'
 IMAGEA = 'a.jpg'
 IMAGEB = 'b.jpg'
 SUBREDDIT = 'earthporn'
@@ -19,7 +19,7 @@ logger.info('scraping r/' + SUBREDDIT + '...')
 post = connection.selectPicture('http://www.reddit.com/r/' + SUBREDDIT)
 
 if post.link == prevImageLink:
-    print('top image already set as wallpaper')
+    print('top image already set as wallpaper (' + post.link + ')')
 else:
     print('downloading image...')
     logger.info('downloading image...')
