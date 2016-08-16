@@ -15,9 +15,10 @@ class ImageAnalyzer:
         self.image = i
         # u = ctypes.windll.user32
         # self.screenWidth = u.GetSystemMetrics(0)
-        # self.screenHeight = u.GetSystemMetrics(1)
-        self.screenWidth = 2560
-        self.screenHeight = 1600
+        CONFIGURATION = 'conf.info'
+        config = pickle.load(open(CONFIGURATION, 'rb'))
+        self.screenWidth = config['width']
+        self.screenHeight = config['height']
         self.resizeForScreen()
 
     def resizeForScreen(self):

@@ -1,6 +1,7 @@
 import connection
-import os
 import logging
+import os
+import pickle
 import time
 from imageAnalyzer import ImageAnalyzer
 
@@ -9,16 +10,17 @@ IMAGEA = 'a.jpg'
 IMAGEB = 'b.jpg'
 SUBREDDIT = 'earthporn'
 CONFIGURATION = 'conf.info'
+config = pickle.load(open(CONFIGURATION, 'rb'))
 DATETIME = time.strftime("%Y-%m-%d") + '.' + time.strftime("%H.%M.%S")
 logging.basicConfig(filename=str('logs/' + DATETIME + ".log"), level=logging.DEBUG)
 logger = logging.getLogger('redditdesktop.runner')
-prevImageLink = open(DIRECTORY + CONFIGURATION).read().rstrip()
+currentImageLink = CONFIGURATION['current']
 
 print('scraping r/' + SUBREDDIT + '...')
 logger.info('scraping r/' + SUBREDDIT + '...')
 post = connection.selectPicture('http://www.reddit.com/r/' + SUBREDDIT)
 
-if post.link == prevImageLink:
+if post.link == currentImageLink:
     print('top image already set as wallpaper (' + post.link + ')')
 else:
     print('downloading image...')
@@ -35,7 +37,8 @@ else:
     analyzer.image.save(DIRECTORY + IMAGEA)
     os.remove(DIRECTORY + IMAGEB)
     analyzer.image.save(DIRECTORY + IMAGEB)
-    print(post.link, file=open(DIRECTORY + CONFIGURATION, 'w'))
+    CONFIGURATION['current'] = post.link
+    pickle.dump(config, open(CONFIGURATION, 'wb'))
     print('done')
     logger.info('done')
 
