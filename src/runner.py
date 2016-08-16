@@ -14,7 +14,7 @@ config = pickle.load(open(CONFIGURATION, 'rb'))
 DATETIME = time.strftime("%Y-%m-%d") + '.' + time.strftime("%H.%M.%S")
 logging.basicConfig(filename=str('logs/' + DATETIME + ".log"), level=logging.DEBUG)
 logger = logging.getLogger('redditdesktop.runner')
-currentImageLink = CONFIGURATION['current']
+currentImageLink = config['current']
 
 print('scraping r/' + SUBREDDIT + '...')
 logger.info('scraping r/' + SUBREDDIT + '...')
