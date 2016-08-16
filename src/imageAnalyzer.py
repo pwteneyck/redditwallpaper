@@ -2,6 +2,7 @@
 # little of the good stuff as possible
 
 import ctypes
+import pickle
 import PIL
 import logging
 
