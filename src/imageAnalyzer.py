@@ -18,8 +18,8 @@ class ImageAnalyzer:
         # self.screenWidth = u.GetSystemMetrics(0)
         CONFIGURATION = 'conf.info'
         config = pickle.load(open(CONFIGURATION, 'rb'))
-        self.screenWidth = config['width']
-        self.screenHeight = config['height']
+        self.screenWidth = config['screenWidth']
+        self.screenHeight = config['screenHeight']
         self.resizeForScreen()
 
     def resizeForScreen(self):
