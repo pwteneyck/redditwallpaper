@@ -55,7 +55,7 @@ pickle.dump(conf, open("conf.info", "wb"))
 SRCLIST = ["runner", "connection", "imageAnalyzer", "redditHTML"]
 
 def downloadAndSaveSrcFile(name, directory):
-    r = requests.get("https://raw.githubusercontent.com/pwteneyck/redditwallpaper/master/src/" + name)
+    r = requests.get("https://raw.githubusercontent.com/pwteneyck/redditwallpaper/osagnosticsetup/src/" + name)
     that = open(directory + name, "w")
     that.write(r.text)
 

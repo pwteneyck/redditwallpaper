@@ -10,7 +10,7 @@ IMAGEB = 'b.jpg'
 SUBREDDIT = 'earthporn'
 CONFIGURATION = 'conf.info'
 DATETIME = time.strftime("%Y-%m-%d") + '.' + time.strftime("%H.%M.%S")
-logging.basicConfig(filename=str(DIRECTORY + 'logs/' + DATETIME + ".log"), level=logging.DEBUG)
+logging.basicConfig(filename=str('logs/' + DATETIME + ".log"), level=logging.DEBUG)
 logger = logging.getLogger('redditdesktop.runner')
 prevImageLink = open(DIRECTORY + CONFIGURATION).read().rstrip()
 
